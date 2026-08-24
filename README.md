@@ -1,2 +1,2 @@
-# Entreg-vel-1
+# Entregavel1
 Algoritmos fundamentais em java/javascript
