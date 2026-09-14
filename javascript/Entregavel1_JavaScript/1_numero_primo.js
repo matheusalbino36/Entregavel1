@@ -1,24 +1,24 @@
-const entrada = prompt("Digite um número inteiro positivo para verificar se é primo:");
-const n = parseInt(entrada);
+const readline = require('readline');
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
-if (isNaN(n)) {
-    alert("Por favor, digite um número válido.");
-} else {
-    let primo = n > 1;
+rl.question("Digite um numero inteiro positivo para verificar se e primo: ", (entrada) => {
+    const numero = parseInt(entrada);
 
-    if (primo && n !== 2 && n % 2 === 0) {
-        primo = false;
-    }
-
-    for (let divisor = 3; primo && divisor * divisor <= n; divisor += 2) {
-        if (n % divisor === 0) {
-            primo = false;
+    
+    let ehPrimo = true;
+    if (numero <= 1) ehPrimo = false;
+    for (let i = 2; i < numero; i++) {
+        if (numero % i === 0) {
+            ehPrimo = false;
+            break;
         }
     }
 
-    if (primo) {
-        alert(`O número ${n} É primo.`);
+    if (ehPrimo) {
+        console.log(`${numero} é um número primo!`);
     } else {
-        alert(`O número ${n} NÃO é primo.`);
+        console.log(`${numero} não é um número primo.`);
     }
-}
+
+    rl.close();
+});
