@@ -1,17 +1,26 @@
-const entradaA = prompt("Digite o primeiro número inteiro (a):");
-const entradaB = prompt("Digite o segundo número inteiro (b):");
+const readline = require('readline');
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
-let a = Math.abs(parseInt(entradaA));
-let b = Math.abs(parseInt(entradaB));
 
-if (isNaN(a) || isNaN(b)) {
-    alert("Por favor, digite números inteiros válidos.");
-} else {
-    while (b !== 0) {
-        const resto = a % b;
-        a = b;
-        b = resto;
-    }
+rl.question("Digite o primeiro número inteiro (a): ", (entradaA) => {
 
-    alert(`O Máximo Divisor Comum (MDC) entre ${parseInt(entradaA)} e ${parseInt(entradaB)} é: ${a}`);
-}
+    rl.question("Digite o segundo número inteiro (b): ", (entradaB) => {
+        
+        let a = Math.abs(parseInt(entradaA));
+        let b = Math.abs(parseInt(entradaB));
+
+        if (isNaN(a) || isNaN(b)) {
+            console.log("Por favor, digite números inteiros válidos.");
+        } else {
+            while (b !== 0) {
+                const resto = a % b;
+                a = b;
+                b = resto;
+            }
+
+            console.log(`O Máximo Divisor Comum (MDC) entre ${parseInt(entradaA)} e ${parseInt(entradaB)} é: ${a}`);
+        }
+
+        rl.close();
+    });
+});
